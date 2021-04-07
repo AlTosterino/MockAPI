@@ -1,0 +1,7 @@
+-e file:.
+black
+mypy
+pre-commit
+ptpython
+sphinx
+tox

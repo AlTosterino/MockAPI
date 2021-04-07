@@ -28,6 +28,7 @@ tags
 *.eggs/
 .installed.cfg
 *.egg-info
+mock_api.egg-info/
 
 # Unittest and coverage
 htmlcov/*
@@ -49,5 +50,11 @@ cover/*
 MANIFEST
 
 # Per-project virtualenvs
-.venv*/
+venv/
 .conda*/
+.env
+.envrc
+.venv
+ENV/
+env.bak
+venv.bak

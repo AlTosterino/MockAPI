@@ -2,8 +2,11 @@
 [run]
 branch = True
 source = mock_api
-# omit = bad_file.py
-
+omit =
+        *__init__*
+        */usr/local/lib*
+        *tests/fixtures*
+        *venv*
 [paths]
 source =
     src/
