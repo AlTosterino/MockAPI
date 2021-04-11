@@ -15,6 +15,12 @@ repos:
   - id: end-of-file-fixer
   - id: mixed-line-ending
     args: ['--fix=auto']  # replace 'auto' with 'lf' to enforce Linux/Mac line endings or 'crlf' for Windows
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: ''  # Use the sha / tag you want to point at
+    hooks:
+    -   id: mypy
+        verbose: true
+        entry: bash -c "mypy src --config-file mypy.ini"
 
 ## If you want to avoid flake8 errors due to unused vars or imports:
 # - repo: https://github.com/myint/autoflake.git
@@ -49,5 +55,6 @@ repos:
   rev: 3.8.4
   hooks:
   - id: flake8
-  ## You can add flake8 plugins via `additional_dependencies`:
+    args: ["src/mock_api"]
+  # You can add flake8 plugins via `additional_dependencies`:
   #  additional_dependencies: [flake8-bugbear]

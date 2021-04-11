@@ -1,7 +1,12 @@
 -e file:.
+autoflake
 black
+flake8
+isort
 mypy
 pre-commit
 ptpython
+pytest
+pytest-cov
 sphinx
 tox
