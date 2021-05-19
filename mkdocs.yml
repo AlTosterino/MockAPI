@@ -1,0 +1,13 @@
+site_name: Mock API
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+
+repo_name: altosterino/mock-api
+repo_url: https://github.com/altosterino/mock-api
+
+extra:
+  version:
+    provider: mike

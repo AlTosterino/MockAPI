@@ -3,6 +3,7 @@ autoflake
 black
 flake8
 isort
+mkdocs-material
 mypy
 pre-commit
 ptpython
