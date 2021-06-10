@@ -3,8 +3,10 @@ git:
   depth: false
 env:
   - PRE_COMMIT_HOME=$HOME/.cache/pre-commit
+
 virtualenv:
   system_site_packages: false
+
 jobs:
   fast_finish: true
   include:
@@ -14,25 +16,41 @@ jobs:
       env: DISTRIB="ubuntu" TOXENV="py37" COVERAGE="false"
     - python: 3.8
       env: DISTRIB="ubuntu" TOXENV="py38" COVERAGE="true"
+
+
 install:
   - pip install pip-tools
   - pip-sync
   - pip install coveralls
+
 before_script:
   - pip list
   - which tox
+
 script:
-#  - tox -e build
   - make test-ci
   - |
     if [[ "$COVERAGE" == "true" ]]; then
       pre-commit install
       pre-commit run --all-files
     fi
+  - mkdocs build
+
 after_success:
   - if [[ "$COVERAGE" == "true" ]]; then coveralls || echo "failed"; fi
+
 after_script:
   - travis-cleanup
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN
+  keep_history: true
+  local_dir: site
+#  on:
+#    branch: main
+
 cache:
   pip: true
   directories:

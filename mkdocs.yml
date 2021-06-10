@@ -11,3 +11,7 @@ repo_url: https://github.com/altosterino/mock-api
 extra:
   version:
     provider: mike
+
+nav:
+  - Home: index.md
+  - About: about.md

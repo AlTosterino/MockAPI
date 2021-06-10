@@ -1,3 +1,5 @@
+[![Maintenance](https://img.shields.io/badge/Docs-MkDocs-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+
 # mock-api
 
 Add a short description here!
