@@ -45,11 +45,12 @@ after_script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GH_TOKEN
+  token: $GH_TOKEN
   keep_history: true
   local_dir: site
-#  on:
-#    branch: main
+  strategy: git
+  on:
+    branch: feature/docs
 
 cache:
   pip: true
