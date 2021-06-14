@@ -1,6 +1,10 @@
+os: linux
+dist: xenial
 language: python
+
 git:
   depth: false
+  
 env:
   - PRE_COMMIT_HOME=$HOME/.cache/pre-commit
 
@@ -21,13 +25,13 @@ jobs:
       python: 3.8
       env: DISTRIB="ubuntu" TOXENV="py38" COVERAGE="true"
     - stage: "Deploy"
-      provider: pages
-      skip_cleanup: true
-      keep_history: true
-      local_dir: site
-      strategy: git
-      on:
-        branch: feature/docs
+      deploy:
+        provider: pages
+        keep_history: true
+        local_dir: site
+        strategy: git
+        on:
+          branch: feature/docs
 
 
 install:
@@ -50,9 +54,6 @@ script:
 
 after_success:
   - if [[ "$COVERAGE" == "true" ]]; then coveralls || echo "failed"; fi
-
-after_script:
-  - travis-cleanup
 
 cache:
   pip: true
