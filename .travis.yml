@@ -21,6 +21,13 @@ jobs:
       python: 3.8
       env: DISTRIB="ubuntu" TOXENV="py38" COVERAGE="true"
     - stage: "Deploy"
+      provider: pages
+      skip_cleanup: true
+      keep_history: true
+      local_dir: site
+      strategy: git
+      on:
+        branch: feature/docs
 
 
 install:
@@ -46,16 +53,6 @@ after_success:
 
 after_script:
   - travis-cleanup
-
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GH_TOKEN
-  keep_history: true
-  local_dir: site
-  strategy: git
-  on:
-    branch: feature/docs
 
 cache:
   pip: true
