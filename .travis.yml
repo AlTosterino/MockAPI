@@ -25,6 +25,9 @@ jobs:
       python: 3.8
       env: DISTRIB="ubuntu" TOXENV="py38" COVERAGE="true"
     - stage: "Deploy"
+      name: "Deploy to Github pages"
+      env:
+        - COVERAGE=false
       deploy:
         provider: pages
         keep_history: true
