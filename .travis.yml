@@ -4,7 +4,7 @@ language: python
 
 git:
   depth: false
-  
+
 env:
   - PRE_COMMIT_HOME=$HOME/.cache/pre-commit
 
