@@ -22,7 +22,6 @@ before_script:
   - pip list
   - which tox
 script:
-#  - tox -e build
   - make test-ci
   - |
     if [[ "$COVERAGE" == "true" ]]; then
