@@ -1,3 +1,3 @@
-# Authorr
+# Authors
 
-* AlTosterino <altosterino@gmail.com>
+*  [AlTosterino](https://github.com/AlTosterino) <altosterino@gmail.com>

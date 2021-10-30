@@ -18,3 +18,6 @@ test-ci:
 	$(PYTHON_EXEC) -m black --check $(LINT_PATHS)
 	$(PYTHON_EXEC) -m mypy $(APP_PATH) --ignore-missing-imports
 	$(PYTHON_EXEC) -m tox
+
+test:
+	$(PYTHON_EXEC) -m pytest
