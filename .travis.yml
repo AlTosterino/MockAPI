@@ -1,37 +1,69 @@
+os: linux
+dist: xenial
 language: python
+
 git:
   depth: false
+
 env:
   - PRE_COMMIT_HOME=$HOME/.cache/pre-commit
+
 virtualenv:
   system_site_packages: false
+
 jobs:
   fast_finish: true
   include:
-    - python: 3.6
-      env: DISTRIB="ubuntu" TOXENV="py36" COVERAGE="false"
-    - python: 3.7
-      env: DISTRIB="ubuntu" TOXENV="py37" COVERAGE="false"
-    - python: 3.8
-      env: DISTRIB="ubuntu" TOXENV="py38" COVERAGE="true"
+    - stage: "Tests"
+      name: "Python 3.6"
+      python: 3.6
+      env: DISTRIB="ubuntu" TOXENV="py36" COVERAGE="false" TEST="true"
+    - name: "Python 3.7"
+      python: 3.7
+      env: DISTRIB="ubuntu" TOXENV="py37" COVERAGE="false" TEST="true"
+    - name: "Python 3.8"
+      python: 3.8
+      env: DISTRIB="ubuntu" TOXENV="py38" COVERAGE="true" TEST="true"
+    - stage: "Deploy"
+      name: "Deploy to Github pages"
+      env: COVERAGE="false" TEST="false" DEPLOY="true"
+      deploy:
+        provider: pages
+        keep_history: true
+        local_dir: site
+        strategy: git
+        edge: true
+        on:
+          branch: feature/docs
+
+
 install:
   - pip install pip-tools
   - pip-sync
   - pip install coveralls
+
 before_script:
   - pip list
   - which tox
+
 script:
-  - make test-ci
+  - |
+    if [[ "$TEST" == "true" ]]; then
+      make test-ci
+    fi
   - |
     if [[ "$COVERAGE" == "true" ]]; then
       pre-commit install
       pre-commit run --all-files
     fi
+  - |
+    if [[ "$DEPLOY" == "true" ]]; then
+      mkdocs build
+    fi
+
 after_success:
   - if [[ "$COVERAGE" == "true" ]]; then coveralls || echo "failed"; fi
-after_script:
-  - travis-cleanup
+
 cache:
   pip: true
   directories:

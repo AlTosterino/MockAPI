@@ -1,38 +1,17 @@
-# mock-api
+# Welcome to MkDocs
 
-Add a short description here!
+For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
+## Commands
 
-## Note
+* `mkdocs new [dir-name]` - Create a new project.
+* `mkdocs serve` - Start the live-reloading docs server.
+* `mkdocs build` - Build the documentation site.
+* `mkdocs -h` - Print help message and exit.
 
-> This is the main page of your project's [Sphinx] documentation. It is
-> formatted in [Markdown]. Add additional pages by creating md-files in
-> `docs` or rst-files (formated in [reStructuredText]) and adding links to
-> them in the `Contents` section below.
->
-> Please check [Sphinx], [recommonmark] and [autostructify] for more information
-> about how to document your project and how to configure your preferences.
+## Project layout
 
-
-## Contents
-
-* [Overview](readme)
-* [License](license)
-* [Authors](authors)
-* [Changelog](changelog)
-* [Module Reference](api/modules)
-
-
-## Indices and tables
-
-```eval_rst
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-```
-
-[Sphinx]: http://www.sphinx-doc.org/
-[Markdown]: https://daringfireball.net/projects/markdown/
-[reStructuredText]: http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
-[recommonmark]: https://recommonmark.readthedocs.io/en/latest
-[autostructify]: https://recommonmark.readthedocs.io/en/latest/auto_structify.html
+    mkdocs.yml    # The configuration file.
+    docs/
+        index.md  # The documentation homepage.
+        ...       # Other markdown pages, images and other files.
