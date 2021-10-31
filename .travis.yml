@@ -16,8 +16,8 @@ jobs:
   include:
     - stage: "Tests"
     - name: "Python 3.10"
-        python: 3.8
-        env: DISTRIB="ubuntu" TOXENV="py310" COVERAGE="true" TEST="true"
+      python: 3.8
+      env: DISTRIB="ubuntu" TOXENV="py310" COVERAGE="true" TEST="true"
     - stage: "Deploy"
       name: "Deploy to Github pages"
       env: COVERAGE="false" TEST="false" DEPLOY="true"
