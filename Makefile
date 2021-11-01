@@ -12,6 +12,9 @@ lint:
 	$(PYTHON_EXEC) -m isort $(LINT_PATHS)
 	$(PYTHON_EXEC) -m mypy $(APP_PATH) --ignore-missing-imports
 
+sync-deps:
+	$(PYTHON_EXEC) -m piptools compile --upgrade
+
 test-ci:
 	$(PYTHON_EXEC) -m autoflake --check --recursive --ignore-init-module-imports --remove-duplicate-keys --remove-unused-variables --remove-all-unused-imports $(LINT_PATHS) > /dev/null
 	$(PYTHON_EXEC) -m isort --check-only $(LINT_PATHS)
